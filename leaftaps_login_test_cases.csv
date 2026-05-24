@@ -1,0 +1,56 @@
+Test ID,Summary,Preconditions,Steps to Reproduce,Expected Result,Actual Result,Status
+TC001,Valid login with correct credentials,User has valid username and password,"1. Open https://leaftaps.com/crmsfa/control/myHomeMain
+2. Enter valid username
+3. Enter valid password
+4. Click Login","User lands on the CRM/SFA home page, welcome message appears, and URL contains /myHomeMain",,
+TC002,Login fails with invalid password,User has valid username but incorrect password,"1. Open the login page
+2. Enter valid username
+3. Enter invalid password
+4. Click Login","Login fails, error message shown, and user remains on login page",,
+TC003,Login fails with invalid username,User enters invalid username and valid password,"1. Open the login page
+2. Enter invalid username
+3. Enter valid password
+4. Click Login","Login fails, error message shown, and user remains on login page",,
+TC004,Login fails with blank username,Password field has valid password,"1. Open the login page
+2. Leave username blank
+3. Enter valid password
+4. Click Login","Validation error shown prompting to enter username",,
+TC005,Login fails with blank password,Username field has valid username,"1. Open the login page
+2. Enter valid username
+3. Leave password blank
+4. Click Login","Validation error shown prompting to enter password",,
+TC006,Login fails with both fields blank,No credentials entered,"1. Open the login page
+2. Leave username blank
+3. Leave password blank
+4. Click Login","Validation errors shown for both fields or general error for missing credentials",,
+TC007,Verify username case sensitivity,User has correct credentials with different username casing,"1. Open the login page
+2. Enter username with different case
+3. Enter valid password
+4. Click Login","Login fails if username is case-sensitive",,
+TC008,Login fails with special characters in username,User enters username with invalid special characters,"1. Open the login page
+2. Enter username containing special characters
+3. Enter valid password
+4. Click Login","Login fails with appropriate error",,
+TC009,SQL injection attempt in username field,User enters injection payload,"1. Open the login page
+2. Enter username: admin' OR '1'='1
+3. Enter any password
+4. Click Login","Login fails and input is sanitized, no unauthorized access",,
+TC010,Verify password masking,Password input should hide entered characters,"1. Open the login page
+2. Enter password into password field","Password characters are masked and not displayed in plain text",,
+TC011,Session persistence after close,User has logged in successfully,"1. Log in with valid credentials
+2. Close browser tab
+3. Reopen browser and navigate to portal","Session either persists or requires login again depending on application behavior",,
+TC012,Remember me option keeps user logged in,Remember me option is available,"1. Open the login page
+2. Enter valid credentials
+3. Select Remember Me
+4. Click Login
+5. Close and reopen browser
+6. Navigate to portal","User remains logged in per application behavior",,
+TC013,Verify login page UI elements,Login page is available,"1. Open the login page","Username field, password field, login button, and any help links are visible and enabled",,
+TC014,Verify error message clarity on invalid login,Invalid login attempt has occurred,"1. Open the login page
+2. Enter invalid credentials
+3. Click Login","Error message is clear, user-friendly, and does not expose system internals",,
+TC015,Verify application handles maximum length input,User enters excessively long values,"1. Open the login page
+2. Enter extremely long username
+3. Enter extremely long password
+4. Click Login","Application safely handles input and either rejects it or validates without crashing",,
